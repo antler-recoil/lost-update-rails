@@ -6,6 +6,11 @@
 </div>
 
 <div class="card narrow">
+  <% if flash[:alert] %>
+    <div class="alert alert-error" role="alert">
+      <strong>Edit conflict.</strong> <%= flash[:alert] %>
+      </div>
+      <% end %>
   <%= render "form", product: @product %>
 </div>
 

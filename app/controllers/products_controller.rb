@@ -31,6 +31,11 @@ class ProductsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  rescue ActiveRecord::StaleObjectError
+    @product = Product.find(params[:id])
+    flash.now[:alert] = "Someone else updated this product while you were editing. " \
+    "The form now shows their latest values. Review them and save again if you stillwant to make your change."
+    render :edit, status: :conflict
   end
 
   def destroy
@@ -45,6 +50,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :stock_count)
+    params.require(:product).permit(:name, :price, :stock_count, :lock_version)
   end
 end
