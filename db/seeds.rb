@@ -9,3 +9,4 @@
 #   end
 
 Product.create(name: "Laptop", price: 999.99, stock_count: 10)
+Product.create(name: "macBook", price: 1999.99, stock_count: 10)
