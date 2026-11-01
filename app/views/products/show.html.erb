@@ -1,0 +1,32 @@
+<div class="page-header">
+  <div>
+    <h1><%= @product.name %></h1>
+    <p>Product #<%= @product.id %></p>
+  </div>
+  <div class="actions">
+    <%= link_to "Edit", edit_product_path(@product), class: "btn btn-primary" %>
+    <%= button_to "Delete", @product, method: :delete, class: "btn btn-danger",
+          form: { class: "inline-form", data: { turbo_confirm: "Delete this product?" } } %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="detail-grid">
+    <div>
+      <div class="detail-label">Price</div>
+      <div class="detail-value"><%= number_to_currency(@product.price) %></div>
+    </div>
+    <div>
+      <div class="detail-label">Stock count</div>
+      <div class="detail-value"><%= @product.stock_count %></div>
+    </div>
+    <div>
+      <div class="detail-label">Last updated</div>
+      <div class="detail-value" style="font-size:16px">
+        <%= @product.updated_at.strftime("%b %-d, %Y %-l:%M:%S %p") %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to "← Back to products", products_path, class: "back-link" %>

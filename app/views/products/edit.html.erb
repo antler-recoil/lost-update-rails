@@ -1,0 +1,12 @@
+<div class="page-header">
+  <div>
+    <h1>Edit product</h1>
+    <p><%= @product.name %> · #<%= @product.id %></p>
+  </div>
+</div>
+
+<div class="card narrow">
+  <%= render "form", product: @product %>
+</div>
+
+<%= link_to "← Back to products", products_path, class: "back-link" %>
